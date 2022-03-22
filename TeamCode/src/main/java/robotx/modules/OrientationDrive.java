@@ -53,7 +53,7 @@ public class OrientationDrive extends XModule {
         backRight = opMode.hardwareMap.dcMotor.get("backRight");
         //backRight.setDirection(DcMotorSimple.Direction.REVERSE);
         backLeft = opMode.hardwareMap.dcMotor.get("backLeft");
-
+        backLeft.setDirection(DcMotorSimple.Direction.REVERSE);
 
         BNO055IMU.Parameters parameters = new BNO055IMU.Parameters();
         parameters.angleUnit           = BNO055IMU.AngleUnit.DEGREES;
