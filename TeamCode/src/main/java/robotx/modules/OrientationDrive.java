@@ -137,9 +137,9 @@ public class OrientationDrive extends XModule {
         //opMode.telemetry.addData("Orientation mode:", orientationMode);
 
 
-        x = xGamepad1().left_stick_x;
-        y = xGamepad1().left_stick_y;
-        r = xGamepad1().right_stick_x;
+        x = xGamepad2().left_stick_x;
+        y = xGamepad2().left_stick_y;
+        r = xGamepad2().right_stick_x;
         s = ((Math.max(Math.abs(x), Math.max(Math.abs(y), Math.abs(r))))*(Math.max(Math.abs(x), Math.max(Math.abs(y), Math.abs(r)))))/((x*x)+(y*y)+(r*r));
 
         if (x>0){
@@ -155,6 +155,7 @@ public class OrientationDrive extends XModule {
             joystickAngle = Math.toRadians(270);
         }
 
+
         xPrime = (Math.sqrt((x*x) + (y*y))) * (Math.cos(robotAngle + joystickAngle));
         yPrime = (Math.sqrt((x*x + y*y))) * (Math.sin(robotAngle + joystickAngle));
 
@@ -164,6 +165,8 @@ public class OrientationDrive extends XModule {
         if (xGamepad1().right_bumper.wasPressed()){
             toggleSuperSlow();
         }
+
+        slowMode = true;
 
         if (slowMode){
             frontLeft.setPower((yPrime-xPrime-r)*(s) * .4);
