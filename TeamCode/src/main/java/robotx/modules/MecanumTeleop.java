@@ -173,7 +173,7 @@ public final class MecanumTeleop extends XModule{
                 backRight.setPower(-0.5);
             }
         }
-        if (xGamepad2().dpad_right.isDown()){
+        if (xGamepad2().dpad_left.isDown()){
             if (slowMode) {
                 frontLeft.setPower(-0.25);
                 frontRight.setPower(0.25);
@@ -187,7 +187,7 @@ public final class MecanumTeleop extends XModule{
                 backRight.setPower(0.5);
             }
         }
-        if (xGamepad2().dpad_left.isDown()){
+        if (xGamepad2().dpad_right.isDown()){
             if (slowMode) {
                 frontLeft.setPower(0.25);
                 frontRight.setPower(-0.25);
