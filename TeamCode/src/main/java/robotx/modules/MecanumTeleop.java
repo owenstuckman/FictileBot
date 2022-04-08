@@ -64,6 +64,8 @@ public final class MecanumTeleop extends XModule{
     public DcMotor backLeft;
     public DcMotor backRight;
 
+    public boolean slowMode = false;
+
 
     public MecanumTeleop(OpMode op){
         super(op);
@@ -89,7 +91,21 @@ public final class MecanumTeleop extends XModule{
         //backRight.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
     }
 
+    public void toggleSlow(){
+        if (slowMode){
+            slowMode = false;
+        }
+
+        else {
+            slowMode = true;
+        }
+    }
+
     public void loop(){
+
+        if (xGamepad2().start.wasPressed()){
+            toggleSlow();
+        }
 
         double xPow = -1 * controlRamp( xGamepad1().left_stick_x); // Negate the left stick value because negative is right. Negating it will make negative left, as we want
         double yPow = controlRamp(xGamepad1().left_stick_y);
@@ -129,30 +145,61 @@ public final class MecanumTeleop extends XModule{
         //- xPow -> if control stick is right (positive value), want to spin backwards
         //- rotPow -> if control stick is right (positive value), want to spin backwards
 
-        if (xGamepad2().dpad_down.isDown()){
-            frontLeft.setPower(0.3);
-            frontRight.setPower(0.3);
-            backLeft.setPower(0.3);
-            backRight.setPower(0.3);
+        if (xGamepad2().dpad_down.isDown()) {
+            if (slowMode) {
+                frontLeft.setPower(0.3/2);
+                frontRight.setPower(0.3/2);
+                backLeft.setPower(0.3/2);
+                backRight.setPower(0.3/2);
+            }
+            else  {
+                frontLeft.setPower(0.5);
+                frontRight.setPower(0.5);
+                backLeft.setPower(0.5);
+                backRight.setPower(0.5);
+            }
         }
         if (xGamepad2().dpad_up.isDown()){
-            frontLeft.setPower(-0.3);
-            frontRight.setPower(-0.3);
-            backLeft.setPower(-0.3);
-            backRight.setPower(-0.3);
+            if (slowMode) {
+                frontLeft.setPower(-0.3/2);
+                frontRight.setPower(-0.3/2);
+                backLeft.setPower(-0.3/2);
+                backRight.setPower(-0.3/2);
+            }
+            else {
+                frontLeft.setPower(-0.5);
+                frontRight.setPower(-0.5);
+                backLeft.setPower(-0.5);
+                backRight.setPower(-0.5);
+            }
         }
         if (xGamepad2().dpad_right.isDown()){
-            frontLeft.setPower(0.3);
-            frontRight.setPower(-0.3);
-            backLeft.setPower(-0.3);
-            backRight.setPower(0.3);
+            if (slowMode) {
+                frontLeft.setPower(-0.25);
+                frontRight.setPower(0.25);
+                backLeft.setPower(0.25);
+                backRight.setPower(-0.25);
+            }
+            else {
+                frontLeft.setPower(0.5);
+                frontRight.setPower(-0.5);
+                backLeft.setPower(-0.5);
+                backRight.setPower(0.5);
+            }
         }
         if (xGamepad2().dpad_left.isDown()){
-            frontLeft.setPower
-                    (-0.3);
-            frontRight.setPower(0.3);
-            backLeft.setPower(0.3);
-            backRight.setPower(-0.3);
+            if (slowMode) {
+                frontLeft.setPower(0.25);
+                frontRight.setPower(-0.25);
+                backLeft.setPower(-0.25);
+                backRight.setPower(0.25);
+            }
+            else {
+                frontLeft.setPower(-0.5);
+                frontRight.setPower(0.5);
+                backLeft.setPower(0.5);
+                backRight.setPower(-0.5);
+            }
         }
     }
 

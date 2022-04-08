@@ -15,7 +15,9 @@ public class GolfMotorServo extends XModule {
     Servo dropperServo;
 
     double power = .7;
-    double power2 = .3;
+    double power2 = .4;
+
+    public boolean slowMode = false;
 
     public GolfMotorServo (OpMode op){
         super(op);
@@ -29,15 +31,40 @@ public class GolfMotorServo extends XModule {
         dropperServo = opMode.hardwareMap.servo.get("DropperServo");
     }
 
+    public void toggleSlow(){
+        if (slowMode){
+            slowMode = false;
+        }
+
+        else {
+            slowMode = true;
+        }
+    }
+
 
 
     public void loop() {
+        if (xGamepad2().start.wasPressed()){
+            toggleSlow();
+        }
+
+
         if (xGamepad2().x.isDown()) {
-            liftMotor.setPower(power2);
+            if (slowMode){
+                liftMotor.setPower(power2 / 2);
+            }
+            else {
+                liftMotor.setPower(power2);
+            }
         }
 
         else if (xGamepad2().y.isDown()) {
-            liftMotor.setPower(-power2);
+            if (slowMode){
+                liftMotor.setPower(-power2 / 2);
+            }
+            else {
+                liftMotor.setPower(-power2);
+            }
         }
 
         else {
@@ -58,6 +85,7 @@ public class GolfMotorServo extends XModule {
 
         if (xGamepad2().right_stick_button.wasPressed()){
             liftServo.setPosition(1);
+
         }
         if (xGamepad2().left_stick_button.wasPressed()){
             liftServo.setPosition(.7);
