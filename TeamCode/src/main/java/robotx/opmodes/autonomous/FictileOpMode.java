@@ -3,30 +3,23 @@ package robotx.opmodes.autonomous;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 
 import robotx.libraries.XOpMode;
-import robotx.modules.GolfMotorServo;
-import robotx.modules.MecanumTeleop;
-import robotx.modules.OrientationDrive;
+import robotx.modules.FictileMotorServo;
+
 
 @TeleOp(name = "GolfBotOpMode", group = "Default")
 
-public class OpMode2021v2 extends XOpMode {
+public class FictileOpMode extends XOpMode {
 
-    OrientationDrive orientationDrive;
-    GolfMotorServo golfMotorServo;
-    MecanumTeleop mecanumTeleop;
+    FictileMotorServo fictileMotorServo;
 
     public void initModules() {                                                                 
 
         super.initModules();
 
-        golfMotorServo = new GolfMotorServo(this);
-        activeModules.add(golfMotorServo);
+        fictileMotorServo = new FictileMotorServo(this);
+        activeModules.add(fictileMotorServo);
 
-        mecanumTeleop = new MecanumTeleop(this);
-        activeModules.add(mecanumTeleop);
 
-        orientationDrive = new OrientationDrive(this);
-        activeModules.add(orientationDrive);
 
     }
 

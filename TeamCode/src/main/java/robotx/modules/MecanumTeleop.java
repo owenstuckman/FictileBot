@@ -47,7 +47,7 @@ import robotx.libraries.OmniDriveSystem;
         backLeft.setPower(getYPower() + getXPower() + getRotationPower());
     }
 }*/
-
+/*
 package robotx.modules;
 
 import com.qualcomm.robotcore.eventloop.opmode.OpMode;
@@ -117,7 +117,7 @@ public final class MecanumTeleop extends XModule{
         */
 
         // another note: positive y value is the FORWARDS direction for all wheels, not "clockwise" or "counterclockwise"; reversed earlier
-
+/*
         double flPow = yPow - xPow + rotPow;
         frontLeft.setPower(flPow);
         //+ yPow -> if the control stick is held in the up direction, move this wheel forwards
@@ -226,3 +226,5 @@ public final class MecanumTeleop extends XModule{
     }
 
 }
+
+ */
