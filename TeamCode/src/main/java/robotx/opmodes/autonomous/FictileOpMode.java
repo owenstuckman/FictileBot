@@ -20,7 +20,6 @@ public class FictileOpMode extends XOpMode {
         activeModules.add(fictileMotorServo);
 
 
-
     }
 
     public void init() {

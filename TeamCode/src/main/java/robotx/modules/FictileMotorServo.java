@@ -10,8 +10,9 @@ public class FictileMotorServo extends XModule {
 
     DcMotor Motor1;
     DcMotor Motor2;
+    DcMotor Motor3;
+    DcMotor Motor4;
 
-    Servo TurnServo;
 
     double power = 1;
 
@@ -25,8 +26,9 @@ public class FictileMotorServo extends XModule {
     public void init() {
         Motor1 = opMode.hardwareMap.dcMotor.get("Motor1");
         Motor2 = opMode.hardwareMap.dcMotor.get("Motor2");
+        Motor3 = opMode.hardwareMap.dcMotor.get("Motor3");
+        Motor4 = opMode.hardwareMap.dcMotor.get("Motor4");
 
-        TurnServo = opMode.hardwareMap.servo.get("TurnServo");
     }
 
     public void toggleSlow(){
@@ -43,37 +45,58 @@ public class FictileMotorServo extends XModule {
 
     public void loop() {
 
-        if (xGamepad1().x.isDown()) {
-            Motor1.setPower(power);
-            Motor2.setPower(power);
+        if (xGamepad1().dpad_up.isDown()) {
+            Motor1.setPower(1);
+            Motor2.setPower(-1);
+            Motor3.setPower(1);
+            Motor4.setPower(1);
         }
         else {
             Motor1.setPower(0);
             Motor2.setPower(0);
+            Motor3.setPower(0);
+            Motor4.setPower(0);
+
         }
 
-        if (xGamepad1().y.isDown()) {
-            Motor1.setPower(-power);
-            Motor2.setPower(-power);
+        if (xGamepad1().dpad_down.isDown()) {
+            Motor1.setPower(-1);
+            Motor2.setPower(1);
+            Motor3.setPower(-1);
+            Motor4.setPower(-1);
+
         }
         else {
             Motor1.setPower(0);
             Motor2.setPower(0);
-        }
+            Motor3.setPower(0);
+            Motor4.setPower(0);
 
-        if (xGamepad1().dpad_left.isDown()){
-            TurnServo.setPosition(.2);
         }
-        if (xGamepad1().dpad_left.wasReleased()){
-            TurnServo.setPosition(.36);
-        }
-
         if (xGamepad1().dpad_right.isDown()){
-            TurnServo.setPosition(.6);
+            Motor1.setPower(-1);
+            Motor2.setPower(-1);
+            Motor3.setPower(-1);
+            Motor4.setPower(1);
         }
-        if (xGamepad1().dpad_right.wasReleased()){
-            TurnServo.setPosition(.36);
-        }
+        else {
+            Motor1.setPower(0);
+            Motor2.setPower(0);
+            Motor3.setPower(0);
+            Motor4.setPower(0);
 
+        }
+        if (xGamepad1().dpad_left.isDown()){
+            Motor1.setPower(1);
+            Motor2.setPower(1);
+            Motor3.setPower(1);
+            Motor4.setPower(-1);
+        }
+        else {
+            Motor1.setPower(0);
+            Motor2.setPower(0);
+            Motor3.setPower(0);
+            Motor4.setPower(0);
+        }
     }
 }
