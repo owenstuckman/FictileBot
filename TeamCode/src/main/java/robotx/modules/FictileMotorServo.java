@@ -46,9 +46,9 @@ public class FictileMotorServo extends XModule {
     public void loop() {
 
         if (xGamepad1().dpad_up.isDown()) {
-            Motor1.setPower(1);
-            Motor2.setPower(-1);
-            Motor3.setPower(1);
+            Motor1.setPower(-1);
+            Motor2.setPower(1);
+            Motor3.setPower(-1);
             Motor4.setPower(1);
         }
         else {
@@ -60,9 +60,9 @@ public class FictileMotorServo extends XModule {
         }
 
         if (xGamepad1().dpad_down.isDown()) {
-            Motor1.setPower(-1);
-            Motor2.setPower(1);
-            Motor3.setPower(-1);
+            Motor1.setPower(1);
+            Motor2.setPower(-1);
+            Motor3.setPower(1);
             Motor4.setPower(-1);
 
         }
@@ -74,9 +74,9 @@ public class FictileMotorServo extends XModule {
 
         }
         if (xGamepad1().dpad_right.isDown()){
-            Motor1.setPower(-1);
-            Motor2.setPower(-1);
-            Motor3.setPower(-1);
+            Motor1.setPower(1);
+            Motor2.setPower(1);
+            Motor3.setPower(1);
             Motor4.setPower(1);
         }
         else {
@@ -87,9 +87,9 @@ public class FictileMotorServo extends XModule {
 
         }
         if (xGamepad1().dpad_left.isDown()){
-            Motor1.setPower(1);
-            Motor2.setPower(1);
-            Motor3.setPower(1);
+            Motor1.setPower(-1);
+            Motor2.setPower(-1);
+            Motor3.setPower(-1);
             Motor4.setPower(-1);
         }
         else {
